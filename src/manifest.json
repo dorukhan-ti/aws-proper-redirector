@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "AWS Console Response Modifier",
+  "version": "1.0",
+  "description": "Intercepts and modifies responses from AWS Console",
+  "permissions": ["declarativeNetRequest", "declarativeNetRequestFeedback"],
+  "host_permissions": ["*://console.aws.amazon.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://console.aws.amazon.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["content.js"],
+      "matches": ["*://console.aws.amazon.com/*"]
+    }
+  ]
+}
